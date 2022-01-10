@@ -1,11 +1,8 @@
 ##########################################################################
 ###  Using WMIClass accelerator to bind WMI Filter and Consumer Events  ##
 ##########################################################################
-
 $CIMClass = 'Win32_Process'
 $ProcessName = 'Calculator'
-
-## Using WMIClass accelerator
 
 # Creating a new event filter
 $instanceFilter = ([wmiclass]"\\.\root\subscription:__EventFilter").CreateInstance()
@@ -15,7 +12,6 @@ $instanceFilter.Name = "Test_$CIMClass`_Process_Creation_Filter"
 $instanceFilter.EventNamespace = 'root\cimv2'
 $result = $instanceFilter.Put()
 $newFilter = $result.Path
-
 
 # Creating a new event consumer
 $instanceConsumer = ([wmiclass]"\\.\root\subscription:ActiveScriptEventConsumer").CreateInstance()
@@ -29,7 +25,6 @@ objShell.run("powershell.exe -ExecutionPolicy Bypass -Command `$null = Get-WmiOb
 $instanceConsumer.ScriptText = $scriptText
 $result = $instanceConsumer.Put()
 $newConsumer = $result.Path
-
 
 # Bind filter and consumer
 $instanceBinding = ([wmiclass]"\\.\root\subscription:__FilterToConsumerBinding").CreateInstance()
