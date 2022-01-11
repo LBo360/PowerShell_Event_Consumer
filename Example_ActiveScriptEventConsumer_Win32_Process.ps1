@@ -2,12 +2,12 @@
 ###  Using WMIClass accelerator to bind WMI Filter and Consumer Events  ##
 ##########################################################################
 $CIMClass = 'Win32_Process'
-$ProcessName = 'Calculator'
+$ProcessName = 'Calculator.exe'
 
 # Creating a new event filter
 $instanceFilter = ([wmiclass]"\\.\root\subscription:__EventFilter").CreateInstance()
 $instanceFilter.QueryLanguage = 'WQL'
-$instanceFilter.Query = "SELECT * FROM __InstanceCreationEvent WITHIN .1 WHERE targetInstance ISA '$CIMClass' AND TargetInstance.Name='$ProcessName.exe'"
+$instanceFilter.Query = "SELECT * FROM __InstanceCreationEvent WITHIN .1 WHERE targetInstance ISA '$CIMClass' AND TargetInstance.Name='$ProcessName'"
 $instanceFilter.Name = "Test_$CIMClass`_Process_Creation_Filter"
 $instanceFilter.EventNamespace = 'root\cimv2'
 $result = $instanceFilter.Put()
