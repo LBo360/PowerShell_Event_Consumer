@@ -1,4 +1,4 @@
-# PowerShell_WMI_Consumer
+# PowerShell Event Consumer
 ![Gears](http://blog.eendorsements.com/wp-content/uploads/2018/10/ea5efb_dc4342f30b664c0c94a10c7358a7d0bd_mv2_d_3310_1650_s_2.jpg "Gears of Automation")
 
 ## Description
